@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Say Hello
-              run: Ready to test your code
+              run: echo Ready to test your code
 
             - name: Checkout code
               uses: actions/checkout@v3
