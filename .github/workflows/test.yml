@@ -36,6 +36,15 @@ jobs:
             
             - name: Build
               run: npm run build
+              
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                    name: dist-files
+                    path: |
+                        dist
+                        package.json
+
 
             - name: Deploy
               run: echo Your code is ready to deploy
