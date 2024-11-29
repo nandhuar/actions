@@ -20,3 +20,20 @@ jobs:
             
             - name: Run test
               run: npm test
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Say Hello
+              run: echo Ready to test your code
+
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: install dependencies
+              run: npm install
+            
+            - name: Build
+              run: npm run build
+
+            - name: Deploy
+              run: echo Your code is ready to deploy
