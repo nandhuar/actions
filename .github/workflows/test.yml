@@ -22,12 +22,9 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3
             
-            - name: Cache dependencies
-              uses: actions/cache@v3
+            - name: Load & cache dependencies
+              uses: ./.github/actions/cache-deps
               id: cache
-              with:
-                path: node_modules
-                key: deps-node-modules-${{ hashFiles('**/package.json') }}
             
             - name: Install Docker CLI
               run: |
@@ -38,9 +35,6 @@ jobs:
               uses: docker/setup-buildx-action@v2
               with:
                 install: true
-
-            - name: Install dependencies
-              run: npm install
             
             - name: Run test
               run: npm test
@@ -96,15 +90,9 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3
             
-            - name: Cache dependencies
-              uses: actions/cache@v3
+            - name: Load & cache dependencies
+              uses: ./.github/actions/cache-deps
               id: cache
-              with:
-                path: node_modules
-                key: deps-node-modules-${{ hashFiles('**/package.json') }}
-
-            - name: install dependencies
-              run: npm install
             
             - name: Lint
               run: npm run lint
