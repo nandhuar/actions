@@ -79,7 +79,7 @@ jobs:
               uses: actions/checkout@v3
 
             - name: js
-              run: ./.github/actions/deploy-s3-js
+              uses: ./.github/actions/deploy-s3-js
 
 
 
