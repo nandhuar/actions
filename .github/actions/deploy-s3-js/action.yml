@@ -1,5 +1,5 @@
 name: 'Deploy to s3'
 description: 'Deploy to s3 bucket'
 runs:
-  using: 'node18'
+  using: 'node12'
   main: 'deploy.js'
