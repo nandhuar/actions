@@ -29,16 +29,23 @@ jobs:
                 path: node_modules
                 key: deps-node-modules-${{ hashFiles('**/package.json') }}
             
+            - name: Install Docker CLI
+              run: |
+                apt-get update
+                apt-get install -y docker.io
+
             - name: Set up Docker
               uses: docker/setup-buildx-action@v2
+              with:
+                install: true
 
-            - name: install dependencies
+            - name: Install dependencies
               run: npm install
             
             - name: Run test
               run: npm test
 
-            - name: docker
+            - name: Build Docker image
               run: docker build .
     build:
         runs-on: ubuntu-latest
