@@ -75,8 +75,10 @@ jobs:
               with:
                 name: dist-files
             
-            - name: Deploy
-              run: ls
+            - name: Get code
+              uses: actions/checkout@v3
+            - name: js
+              run: ./.github/actopms/deploy-s3-js
 
 
 
