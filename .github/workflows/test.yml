@@ -57,16 +57,9 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3
             
-            - name: Cache dependencies
-              uses: actions/cache@v3
+            - name: Load & cache dependencies
+              uses: ./.github/actions/cache-deps
               id: cache
-              with:
-                path: node_modules
-                key: deps-node-modules-${{ hashFiles('**/package.json') }}
-
-            - name: install dependencies
-              if: steps.cache.outputs.cache-hit != 'true'
-              run: npm install
             
             - name: Build
               run: npm run build

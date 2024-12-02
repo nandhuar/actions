@@ -1,0 +1,16 @@
+name: 'Get & Cache dependencies'
+description: 'Get and cache dependencies for faster builds'
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      id: cache
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package.json') }}
+
+    - name: install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm install
+      shell: bash
